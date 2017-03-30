@@ -1,0 +1,1603 @@
+#MIPS_CODE:
+.data
+S0: .asciiz "in circle"
+S1: .asciiz "reached 1"
+S2: .asciiz "into to brace"
+S3: .asciiz "default reached!"
+S4: .asciiz "same?"
+S5: .asciiz "still same?"
+S6: .asciiz "EQU is good"
+S7: .asciiz "you cant see this"
+S8: .asciiz "cannot see this neither"
+S9: .asciiz "maybe this is ok"
+S10: .asciiz "NEQ is good"
+S11: .asciiz "Greater is good"
+S12: .asciiz "Less is good"
+S13: .asciiz "GTE is good"
+S14: .asciiz "LTE is good"
+S15: .asciiz "you can see this for count ="
+S16: .asciiz "but you should never see this"
+S17: .asciiz "error!"
+S18: .asciiz "Calculate test begin"
+S19: .asciiz "printf test start!"
+S20: .asciiz " !#$%&'()*+,-./0123456789:;<=>? @ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}"
+S21: .asciiz "Max & Min integer:"
+S22: .asciiz "assign test start!"
+S23: .asciiz "print char:"
+S24: .asciiz "print expression"
+S25: .asciiz "local or global?"
+S26: .asciiz "global"
+S27: .asciiz "local"
+S28: .asciiz "not case sensitive!"
+S29: .asciiz "case sensitive!"
+S30: .asciiz "scanf test start! Please input 1 int then 1 char then another int!"
+S31: .asciiz ""
+S32: .asciiz "The first one:"
+S33: .asciiz "The second one:"
+S34: .asciiz "Global is: "
+S35: .asciiz "start while test!"
+S36: .asciiz "while test finished!\nbegin switchtest!"
+S37: .asciiz "get result:"
+S38: .asciiz "get result:"
+S39: .asciiz "get result:"
+S40: .asciiz "get result:"
+S41: .asciiz "start relationcover!"
+S42: .asciiz "start recursive!"
+
+.text
+addi $s7,$zero,0x500000
+addi $fp,$zero,0x00500000
+
+addi $s7,$s7,-4
+addi $t0,$zero,2147483647
+sw $t0,0($s7)
+addi $s7,$s7,-4
+addi $t0,$zero,-2147483648
+sw $t0,0($s7)
+addi $s7,$s7,-4
+addi $t0,$zero,0
+sw $t0,0($s7)
+addi $s7,$s7,-4
+addi $t0,$zero,-15
+sw $t0,0($s7)
+addi $s7,$s7,-4
+addi $t0,$zero,-20
+sw $t0,0($s7)
+addi $s7,$s7,-4
+addi $t0,$zero,9
+sw $t0,0($s7)
+addi $s7,$s7,-4
+addi $t0,$zero,97
+sw $t0,0($s7)
+addi $s7,$s7,-4
+addi $t0,$zero,43
+sw $t0,0($s7)
+addi $s7,$s7,-4
+addi $t0,$zero,42
+sw $t0,0($s7)
+addi $s7,$s7,-4
+addi $t0,$zero,48
+sw $t0,0($s7)
+addi $s7,$s7,-4
+addi $t0,$zero,95
+sw $t0,0($s7)
+addi $s7,$s7,-4
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $s7,$s7,-4
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $s7,$s7,-4
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $s7,$s7,-4
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $s7,$s7,-4
+addi $t0,$zero,20
+sw $t0,0($s7)
+addi $s7,$s7,-36
+addi $s7,$s7,-4
+addi $t0,$zero,20
+sw $t0,0($s7)
+addi $s7,$s7,-8
+j main
+tempadd:
+addi $s7,$s7,-4
+sw $fp,0($s7)
+move $fp,$s7#save stack index to fp
+addi $t0,$fp,-4
+move $s7,$t0
+addi $t0,$s7,12
+lw $t0,0($t0)
+sw $t0,0($s7)
+addi $t0,$fp,-8#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-4
+lw $t0,0($t0)
+addi $t1,$zero,1#add 31
+add $t0,$t0,$t1
+addi $t1,$fp,-8
+sw $t0,0($t1)
+addi $t0,$fp,-8
+lw $t0,0($t0)
+addi $t1,$fp,-4
+sw $t0,0($t1)
+addi $t0,$fp,-4
+lw $t0,0($t0)
+li $v0,1#print int var
+move $a0,$t0
+syscall
+move $s7,$fp
+lw $fp,0($s7)
+addi $s7,$s7,4
+jr $ra
+caltest:
+addi $s7,$s7,-4
+sw $fp,0($s7)
+move $fp,$s7#save stack index to fp
+addi $s7,$s7,-4#gen var
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $s7,$s7,-4#gen var
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $s7,$s7,-4#gen var
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $s7,$s7,-4#gen var
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $s7,$s7,-4#gen var
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-24#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$zero,0#sub 11
+addi $t1,$zero,13#sub 11
+sub $t0,$t0,$t1
+addi $t1,$fp,-24
+sw $t0,0($t1)
+addi $t0,$fp,-28#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-24
+lw $t0,0($t0)
+addi $t1,$zero,79#add 31
+add $t0,$t0,$t1
+addi $t1,$fp,-28
+sw $t0,0($t1)
+addi $t0,$fp,-28
+lw $t0,0($t0)
+addi $t1,$fp,-4
+sw $t0,0($t1)
+addi $t0,$fp,-32#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$zero,13#add 11
+addi $t1,$zero,-97#add 11
+add $t0,$t0,$t1
+addi $t1,$fp,-32
+sw $t0,0($t1)
+addi $t0,$fp,-32
+lw $t0,0($t0)
+addi $t1,$fp,-8
+sw $t0,0($t1)
+addi $t0,$fp,-36#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$zero,13
+addi $t1,$zero,-79
+mult $t0,$t1
+addi $t0,$fp,-36
+mflo $t1
+sw $t1,0($t0)
+addi $t0,$fp,-36
+lw $t0,0($t0)
+addi $t1,$fp,-12
+sw $t0,0($t1)
+addi $t0,$fp,-40#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$zero,79
+addi $t1,$zero,-13
+div $t0,$t1
+addi $t0,$fp,-40
+mflo $t1
+sw $t1,0($t0)
+addi $t0,$fp,-40
+lw $t0,0($t0)
+addi $t1,$fp,-16
+sw $t0,0($t1)
+addi $t0,$fp,-44#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$zero,1079
+addi $t1,$zero,18
+mult $t0,$t1
+addi $t0,$fp,-44
+mflo $t1
+sw $t1,0($t0)
+addi $t0,$fp,-48#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$zero,24
+addi $t1,$zero,5
+mult $t0,$t1
+addi $t0,$fp,-48
+mflo $t1
+sw $t1,0($t0)
+addi $t0,$fp,-52#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-44#sub 33
+lw $t0,0($t0)
+addi $t1,$fp,-48
+lw $t1,0($t1)
+sub $t0,$t0,$t1
+addi $t1,$fp,-52
+sw $t0,0($t1)
+addi $t0,$fp,-56#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$zero,9
+addi $t1,$zero,-2
+div $t0,$t1
+addi $t0,$fp,-56
+mflo $t1
+sw $t1,0($t0)
+addi $t0,$fp,-60#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-52#add 33
+lw $t0,0($t0)
+addi $t1,$fp,-56
+lw $t1,0($t1)
+add $t0,$t0,$t1
+addi $t1,$fp,-60
+sw $t0,0($t1)
+addi $t0,$fp,-60
+lw $t0,0($t0)
+addi $t1,$fp,-20
+sw $t0,0($t1)
+addi $t0,$fp,-4
+lw $t0,0($t0)
+li $v0,1#print int var
+move $a0,$t0
+syscall
+addi $t0,$fp,-8
+lw $t0,0($t0)
+li $v0,1#print int var
+move $a0,$t0
+syscall
+addi $t0,$fp,-12
+lw $t0,0($t0)
+li $v0,1#print int var
+move $a0,$t0
+syscall
+addi $t0,$fp,-16
+lw $t0,0($t0)
+li $v0,1#print int var
+move $a0,$t0
+syscall
+addi $t0,$fp,-20
+lw $t0,0($t0)
+li $v0,1#print int var
+move $a0,$t0
+syscall
+move $s7,$fp
+lw $fp,0($s7)
+addi $s7,$s7,4
+jr $ra
+move $s7,$fp
+lw $fp,0($s7)
+addi $s7,$s7,4
+jr $ra
+returnq:
+addi $s7,$s7,-4
+sw $fp,0($s7)
+move $fp,$s7#save stack index to fp
+addi $t0,$zero,81
+add $v0,$zero,$t0
+addi $s7,$s7,-4
+move $s7,$fp
+lw $fp,0($s7)
+addi $s7,$s7,4
+jr $ra
+whiletest:
+addi $s7,$s7,-4
+sw $fp,0($s7)
+move $fp,$s7#save stack index to fp
+addi $s7,$s7,-4#gen var
+addi $t0,$zero,10
+sw $t0,0($s7)
+add $t0,$zero,0
+addi $t1,$fp,-4
+sw $t0,0($t1)
+A57:
+nop
+addi $t0,$fp,-4
+lw $t0,0($t0)
+addi $t1,$zero,10
+bge $t0,$t1,A64
+addi $t0,$fp,-8#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-4
+lw $t0,0($t0)
+addi $t1,$zero,1#add 31
+add $t0,$t0,$t1
+addi $t1,$fp,-8
+sw $t0,0($t1)
+addi $t0,$fp,-8
+lw $t0,0($t0)
+addi $t1,$fp,-4
+sw $t0,0($t1)
+la $a0,S0
+li $v0,4#print str
+syscall
+addi $t0,$fp,-4
+lw $t0,0($t0)
+li $v0,1#print int var
+move $a0,$t0
+syscall
+j A57
+A64:
+move $s7,$fp
+lw $fp,0($s7)
+addi $s7,$s7,4
+jr $ra
+move $s7,$fp
+lw $fp,0($s7)
+addi $s7,$s7,4
+jr $ra
+switchtest:
+addi $s7,$s7,-4
+sw $fp,0($s7)
+move $fp,$s7#save stack index to fp
+addi $t0,$fp,-4
+move $s7,$t0
+addi $t0,$s7,12
+lw $t0,0($t0)
+sw $t0,0($s7)
+nop
+addi $t0,$fp,-4
+lw $t0,0($t0)
+addi $t1,$zero,1
+bne $t0,$t1,A72
+la $a0,S1
+li $v0,4#print str
+syscall
+j A83
+A72:
+nop
+addi $t0,$fp,-4
+lw $t0,0($t0)
+addi $t1,$zero,2
+bne $t0,$t1,A77
+la $a0,S2
+li $v0,4#print str
+syscall
+addi $t0,$zero,50
+add $v0,$zero,$t0
+addi $s7,$s7,-4
+move $s7,$fp
+lw $fp,0($s7)
+addi $s7,$s7,4
+jr $ra
+j A83
+A77:
+nop
+addi $t0,$fp,-4
+lw $t0,0($t0)
+addi $t1,$zero,3
+bne $t0,$t1,A82
+addi $s7,$s7,-4
+sw $ra,0($s7)
+jal whiletest
+lw $ra,0($s7)
+addi $s7,$s7,4#sendback stack
+addi $t0,$zero,233
+add $v0,$zero,$t0
+addi $s7,$s7,-4
+move $s7,$fp
+lw $fp,0($s7)
+addi $s7,$s7,4
+jr $ra
+j A83
+A82:
+la $a0,S3
+li $v0,4#print str
+syscall
+A83:
+addi $t0,$zero,0
+add $v0,$zero,$t0
+addi $s7,$s7,-4
+move $s7,$fp
+lw $fp,0($s7)
+addi $s7,$s7,4
+jr $ra
+relationcover:
+addi $s7,$s7,-4
+sw $fp,0($s7)
+move $fp,$s7#save stack index to fp
+addi $t0,$fp,-4
+move $s7,$t0
+addi $t0,$s7,12
+lw $t0,0($t0)
+sw $t0,0($s7)
+addi $s7,$s7,-4#gen var
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $s7,$s7,-4#gen var
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $s7,$s7,-4#gen var
+addi $t0,$zero,10
+sw $t0,0($s7)
+nop
+addi $t0,$fp,-4
+lw $t0,0($t0)
+addi $t1,$zero,97
+bne $t0,$t1,A112
+add $t0,$zero,0
+addi $t1,$fp,-12
+sw $t0,0($t1)
+add $t0,$zero,97
+addi $t1,$fp,-8
+sw $t0,0($t1)
+add $t0,$zero,97
+addi $t1,$fp,-16
+sw $t0,0($t1)
+nop
+addi $t0,$fp,-8
+lw $t0,0($t0)
+addi $t1,$fp,-4
+lw $t1,0($t1)
+bne $t0,$t1,A100
+la $a0,S4
+li $v0,4#print str
+syscall
+addi $t0,$fp,-20#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-12
+lw $t0,0($t0)
+addi $t1,$zero,1#add 31
+add $t0,$t0,$t1
+addi $t1,$fp,-20
+sw $t0,0($t1)
+addi $t0,$fp,-20
+lw $t0,0($t0)
+addi $t1,$fp,-12
+sw $t0,0($t1)
+A100:
+nop
+addi $t0,$fp,-16
+lw $t0,0($t0)
+addi $t1,$fp,-4
+lw $t1,0($t1)
+bne $t0,$t1,A106
+la $a0,S5
+li $v0,4#print str
+syscall
+addi $t0,$fp,-24#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-12
+lw $t0,0($t0)
+addi $t1,$zero,1#add 31
+add $t0,$t0,$t1
+addi $t1,$fp,-24
+sw $t0,0($t1)
+addi $t0,$fp,-24
+lw $t0,0($t0)
+addi $t1,$fp,-12
+sw $t0,0($t1)
+A106:
+nop
+addi $t0,$fp,-12
+lw $t0,0($t0)
+addi $t1,$zero,2
+bne $t0,$t1,A110
+la $a0,S6
+li $v0,4#print str
+syscall
+A110:
+add $t0,$zero,111
+addi $t1,$fp,-8
+sw $t0,0($t1)
+A112:
+nop
+addi $t0,$fp,-8
+lw $t0,0($t0)
+addi $t1,$zero,110
+beq $t0,$t1,A139
+add $t0,$zero,0
+addi $t1,$fp,-12
+sw $t0,0($t1)
+nop
+addi $t0,$fp,-4
+lw $t0,0($t0)
+addi $t1,$fp,-16
+lw $t1,0($t1)
+beq $t0,$t1,A121
+addi $t0,$fp,-28#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-12
+lw $t0,0($t0)
+addi $t1,$zero,1#add 31
+add $t0,$t0,$t1
+addi $t1,$fp,-28
+sw $t0,0($t1)
+addi $t0,$fp,-28
+lw $t0,0($t0)
+addi $t1,$fp,-12
+sw $t0,0($t1)
+la $a0,S7
+li $v0,4#print str
+syscall
+A121:
+nop
+addi $t0,$fp,-8
+lw $t0,0($t0)
+addi $t1,$zero,111
+beq $t0,$t1,A127
+addi $t0,$fp,-32#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-12
+lw $t0,0($t0)
+addi $t1,$zero,1#add 31
+add $t0,$t0,$t1
+addi $t1,$fp,-32
+sw $t0,0($t1)
+addi $t0,$fp,-32
+lw $t0,0($t0)
+addi $t1,$fp,-12
+sw $t0,0($t1)
+la $a0,S8
+li $v0,4#print str
+syscall
+A127:
+nop
+addi $t0,$fp,-8
+lw $t0,0($t0)
+addi $t1,$fp,-4
+lw $t1,0($t1)
+beq $t0,$t1,A133
+addi $t0,$fp,-36#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-12
+lw $t0,0($t0)
+addi $t1,$zero,1#add 31
+add $t0,$t0,$t1
+addi $t1,$fp,-36
+sw $t0,0($t1)
+addi $t0,$fp,-36
+lw $t0,0($t0)
+addi $t1,$fp,-12
+sw $t0,0($t1)
+la $a0,S9
+li $v0,4#print str
+syscall
+A133:
+nop
+addi $t0,$fp,-12
+lw $t0,0($t0)
+addi $t1,$zero,1
+bne $t0,$t1,A137
+la $a0,S10
+li $v0,4#print str
+syscall
+A137:
+add $t0,$zero,100
+addi $t1,$fp,-8
+sw $t0,0($t1)
+A139:
+nop
+addi $t0,$fp,-8
+lw $t0,0($t0)
+addi $t1,$zero,99
+ble $t0,$t1,A166
+add $t0,$zero,0
+addi $t1,$fp,-12
+sw $t0,0($t1)
+nop
+addi $t0,$fp,-8
+lw $t0,0($t0)
+addi $t1,$fp,-12
+lw $t1,0($t1)
+ble $t0,$t1,A147
+addi $t0,$fp,-40#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-12
+lw $t0,0($t0)
+addi $t1,$zero,1#add 31
+add $t0,$t0,$t1
+addi $t1,$fp,-40
+sw $t0,0($t1)
+addi $t0,$fp,-40
+lw $t0,0($t0)
+addi $t1,$fp,-12
+sw $t0,0($t1)
+A147:
+nop
+addi $t0,$fp,-8
+lw $t0,0($t0)
+addi $t1,$fp,-4
+lw $t1,0($t1)
+ble $t0,$t1,A152
+addi $t0,$fp,-44#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-12
+lw $t0,0($t0)
+addi $t1,$zero,1#add 31
+add $t0,$t0,$t1
+addi $t1,$fp,-44
+sw $t0,0($t1)
+addi $t0,$fp,-44
+lw $t0,0($t0)
+addi $t1,$fp,-12
+sw $t0,0($t1)
+A152:
+nop
+addi $t0,$fp,-8
+lw $t0,0($t0)
+addi $t1,$zero,99
+ble $t0,$t1,A160
+nop
+addi $t0,$fp,-8
+lw $t0,0($t0)
+addi $t1,$zero,98
+ble $t0,$t1,A159
+addi $t0,$fp,-48#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-12
+lw $t0,0($t0)
+addi $t1,$zero,1#add 31
+add $t0,$t0,$t1
+addi $t1,$fp,-48
+sw $t0,0($t1)
+addi $t0,$fp,-48
+lw $t0,0($t0)
+addi $t1,$fp,-12
+sw $t0,0($t1)
+A159:
+A160:
+nop
+addi $t0,$fp,-12
+lw $t0,0($t0)
+addi $t1,$zero,3
+bne $t0,$t1,A164
+la $a0,S11
+li $v0,4#print str
+syscall
+A164:
+add $t0,$zero,77
+addi $t1,$fp,-8
+sw $t0,0($t1)
+A166:
+nop
+addi $t0,$fp,-8
+lw $t0,0($t0)
+addi $t1,$zero,88
+bge $t0,$t1,A189
+add $t0,$zero,0
+addi $t1,$fp,-12
+sw $t0,0($t1)
+nop
+addi $t0,$fp,-8
+lw $t0,0($t0)
+addi $t1,$fp,-4
+lw $t1,0($t1)
+bge $t0,$t1,A174
+addi $t0,$fp,-52#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-12
+lw $t0,0($t0)
+addi $t1,$zero,1#add 31
+add $t0,$t0,$t1
+addi $t1,$fp,-52
+sw $t0,0($t1)
+addi $t0,$fp,-52
+lw $t0,0($t0)
+addi $t1,$fp,-12
+sw $t0,0($t1)
+A174:
+nop
+addi $t0,$fp,-16
+lw $t0,0($t0)
+addi $t1,$fp,-4
+lw $t1,0($t1)
+bge $t0,$t1,A179
+addi $t0,$fp,-56#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-12
+lw $t0,0($t0)
+addi $t1,$zero,1#add 31
+add $t0,$t0,$t1
+addi $t1,$fp,-56
+sw $t0,0($t1)
+addi $t0,$fp,-56
+lw $t0,0($t0)
+addi $t1,$fp,-12
+sw $t0,0($t1)
+A179:
+nop
+addi $t0,$fp,-12
+lw $t0,0($t0)
+addi $t1,$fp,-8
+lw $t1,0($t1)
+bge $t0,$t1,A184
+addi $t0,$fp,-60#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-12
+lw $t0,0($t0)
+addi $t1,$zero,1#add 31
+add $t0,$t0,$t1
+addi $t1,$fp,-60
+sw $t0,0($t1)
+addi $t0,$fp,-60
+lw $t0,0($t0)
+addi $t1,$fp,-12
+sw $t0,0($t1)
+A184:
+nop
+addi $t0,$fp,-12
+lw $t0,0($t0)
+addi $t1,$zero,2
+bne $t0,$t1,A188
+la $a0,S12
+li $v0,4#print str
+syscall
+A188:
+A189:
+nop
+addi $t0,$fp,-8
+lw $t0,0($t0)
+addi $t1,$zero,66
+blt $t0,$t1,A212
+add $t0,$zero,0
+addi $t1,$fp,-12
+sw $t0,0($t1)
+nop
+addi $t0,$fp,-8
+lw $t0,0($t0)
+addi $t1,$zero,50
+blt $t0,$t1,A197
+addi $t0,$fp,-64#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-12
+lw $t0,0($t0)
+addi $t1,$zero,1#add 31
+add $t0,$t0,$t1
+addi $t1,$fp,-64
+sw $t0,0($t1)
+addi $t0,$fp,-64
+lw $t0,0($t0)
+addi $t1,$fp,-12
+sw $t0,0($t1)
+A197:
+nop
+addi $t0,$fp,-8
+lw $t0,0($t0)
+addi $t1,$fp,-4
+lw $t1,0($t1)
+blt $t0,$t1,A202
+addi $t0,$fp,-68#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-12
+lw $t0,0($t0)
+addi $t1,$zero,1#add 31
+add $t0,$t0,$t1
+addi $t1,$fp,-68
+sw $t0,0($t1)
+addi $t0,$fp,-68
+lw $t0,0($t0)
+addi $t1,$fp,-12
+sw $t0,0($t1)
+A202:
+nop
+addi $t0,$fp,-16
+lw $t0,0($t0)
+addi $t1,$fp,-4
+lw $t1,0($t1)
+blt $t0,$t1,A207
+addi $t0,$fp,-72#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-12
+lw $t0,0($t0)
+addi $t1,$zero,1#add 31
+add $t0,$t0,$t1
+addi $t1,$fp,-72
+sw $t0,0($t1)
+addi $t0,$fp,-72
+lw $t0,0($t0)
+addi $t1,$fp,-12
+sw $t0,0($t1)
+A207:
+nop
+addi $t0,$fp,-12
+lw $t0,0($t0)
+addi $t1,$zero,2
+bne $t0,$t1,A211
+la $a0,S13
+li $v0,4#print str
+syscall
+A211:
+A212:
+nop
+addi $t0,$fp,-8
+lw $t0,0($t0)
+addi $t1,$zero,111
+bgt $t0,$t1,A236
+add $t0,$zero,0
+addi $t1,$fp,-12
+sw $t0,0($t1)
+nop
+addi $t0,$fp,-4
+lw $t0,0($t0)
+addi $t1,$fp,-8
+lw $t1,0($t1)
+bgt $t0,$t1,A220
+addi $t0,$fp,-76#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-12
+lw $t0,0($t0)
+addi $t1,$zero,1#add 31
+add $t0,$t0,$t1
+addi $t1,$fp,-76
+sw $t0,0($t1)
+addi $t0,$fp,-76
+lw $t0,0($t0)
+addi $t1,$fp,-12
+sw $t0,0($t1)
+A220:
+nop
+addi $t0,$fp,-16
+lw $t0,0($t0)
+addi $t1,$fp,-4
+lw $t1,0($t1)
+bgt $t0,$t1,A225
+addi $t0,$fp,-80#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-12
+lw $t0,0($t0)
+addi $t1,$zero,1#add 31
+add $t0,$t0,$t1
+addi $t1,$fp,-80
+sw $t0,0($t1)
+addi $t0,$fp,-80
+lw $t0,0($t0)
+addi $t1,$fp,-12
+sw $t0,0($t1)
+A225:
+nop
+addi $t0,$fp,-8
+lw $t0,0($t0)
+addi $t1,$zero,1000
+bgt $t0,$t1,A230
+addi $t0,$fp,-84#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-12
+lw $t0,0($t0)
+addi $t1,$zero,1#add 31
+add $t0,$t0,$t1
+addi $t1,$fp,-84
+sw $t0,0($t1)
+addi $t0,$fp,-84
+lw $t0,0($t0)
+addi $t1,$fp,-12
+sw $t0,0($t1)
+A230:
+nop
+addi $t0,$fp,-12
+lw $t0,0($t0)
+addi $t1,$zero,2
+bne $t0,$t1,A234
+la $a0,S14
+li $v0,4#print str
+syscall
+A234:
+add $t0,$zero,1
+addi $t1,$fp,-12
+sw $t0,0($t1)
+A236:
+nop
+addi $t0,$fp,-12
+lw $t0,0($t0)
+addi $t1,$zero,0
+beq $t0,$t1,A241
+la $a0,S15
+li $v0,4#print str
+syscall
+addi $t0,$fp,-8
+lw $t0,0($t0)
+li $v0,1#print int var
+move $a0,$t0
+syscall
+A241:
+add $t0,$zero,0
+addi $t1,$fp,-12
+sw $t0,0($t1)
+nop
+addi $t0,$fp,-12
+lw $t0,0($t0)
+addi $t1,$zero,0
+beq $t0,$t1,A246
+la $a0,S16
+li $v0,4#print str
+syscall
+A246:
+addi $t0,$fp,-4
+lw $v0,0($t0)
+addi $s7,$s7,-4
+move $s7,$fp
+lw $fp,0($s7)
+addi $s7,$s7,4
+jr $ra
+f:
+addi $s7,$s7,-4
+sw $fp,0($s7)
+move $fp,$s7#save stack index to fp
+addi $t0,$fp,-4
+move $s7,$t0
+addi $t0,$s7,12
+lw $t0,0($t0)
+sw $t0,0($s7)
+nop
+addi $t0,$fp,-4
+lw $t0,0($t0)
+addi $t1,$zero,0
+bgt $t0,$t1,A254
+la $a0,S17
+li $v0,4#print str
+syscall
+addi $t0,$zero,0
+add $v0,$zero,$t0
+addi $s7,$s7,-4
+move $s7,$fp
+lw $fp,0($s7)
+addi $s7,$s7,4
+jr $ra
+A254:
+nop
+addi $t0,$fp,-4
+lw $t0,0($t0)
+addi $t1,$zero,1
+bne $t0,$t1,A258
+addi $t0,$zero,1
+add $v0,$zero,$t0
+addi $s7,$s7,-4
+move $s7,$fp
+lw $fp,0($s7)
+addi $s7,$s7,4
+jr $ra
+A258:
+nop
+addi $t0,$fp,-4
+lw $t0,0($t0)
+addi $t1,$zero,2
+bne $t0,$t1,A262
+addi $t0,$zero,1
+add $v0,$zero,$t0
+addi $s7,$s7,-4
+move $s7,$fp
+lw $fp,0($s7)
+addi $s7,$s7,4
+jr $ra
+A262:
+addi $t0,$fp,-8#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-4#sub 31
+lw $t0,0($t0)
+addi $t1,$zero,1
+sub $t0,$t0,$t1
+addi $t1,$fp,-8
+sw $t0,0($t1)
+addi $s7,$s7,-4
+addi $t0,$fp,-8
+lw $t0,0($t0)
+sw $t0,0($s7)
+addi $s7,$s7,-4
+sw $ra,0($s7)
+jal f
+lw $ra,0($s7)
+addi $s7,$s7,4#sendback stack
+addi $t0,$fp,-16#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-16
+sw $v0,0($t0)
+addi $t0,$fp,-20#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-4#sub 31
+lw $t0,0($t0)
+addi $t1,$zero,2
+sub $t0,$t0,$t1
+addi $t1,$fp,-20
+sw $t0,0($t1)
+addi $s7,$s7,-4
+addi $t0,$fp,-20
+lw $t0,0($t0)
+sw $t0,0($s7)
+addi $s7,$s7,-4
+sw $ra,0($s7)
+jal f
+lw $ra,0($s7)
+addi $s7,$s7,4#sendback stack
+addi $t0,$fp,-28#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-28
+sw $v0,0($t0)
+addi $t0,$fp,-32#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-16#add 33
+lw $t0,0($t0)
+addi $t1,$fp,-28
+lw $t1,0($t1)
+add $t0,$t0,$t1
+addi $t1,$fp,-32
+sw $t0,0($t1)
+addi $t0,$fp,-32
+lw $v0,0($t0)
+addi $s7,$s7,-4
+move $s7,$fp
+lw $fp,0($s7)
+addi $s7,$s7,4
+jr $ra
+main:
+addi $s7,$s7,-4#gen var
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $s7,$s7,-4#gen var
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $s7,$s7,-4#gen var
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $s7,$s7,-4#gen var
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $s7,$s7,-4#gen var
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $s7,$s7,-4#gen var
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $s7,$s7,-4#gen var
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $s7,$s7,-4#gen var
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $s7,$s7,-4#gen array
+addi $t0,$zero,20
+sw $t0,0($s7)
+addi $s7,$s7,-20
+la $a0,S18
+li $v0,4#print str
+syscall
+addi $s7,$s7,-4
+addi $t0,$zero,0xf
+sw $t0,0($s7)
+addi $s7,$s7,-4
+sw $ra,0($s7)
+jal tempadd
+lw $ra,0($s7)
+addi $s7,$s7,4#sendback stack
+addi $s7,$s7,-4
+sw $ra,0($s7)
+jal caltest
+lw $ra,0($s7)
+addi $s7,$s7,4#sendback stack
+la $a0,S19
+li $v0,4#print str
+syscall
+la $a0,S20
+li $v0,4#print str
+syscall
+la $a0,S21
+li $v0,4#print str
+syscall
+addi $a0,$zero,2147483647
+li $v0,1#print integer
+syscall
+addi $a0,$zero,-2147483648
+li $v0,1#print integer
+syscall
+la $a0,S22
+li $v0,4#print str
+syscall
+add $t0,$zero,10
+addi $t1,$fp,-116
+sw $t0,0($t1)
+add $t0,$zero,-15
+addi $t1,$zero,5242832
+sw $t0,0($t1)
+addi $t0,$zero,233
+addi $t1,$zero,-0
+addi $t2,$zero,5242816
+add $t1,$t1,$t2
+sw $t0,0($t1)
+addi $t0,$zero,81
+addi $t1,$zero,-4
+addi $t2,$zero,5242776
+add $t1,$t1,$t2
+sw $t0,0($t1)
+addi $t0,$zero,43
+addi $t1,$zero,-12
+addi $t2,$fp,-148
+add $t1,$t1,$t2
+sw $t0,0($t1)
+addi $t0,$fp,-176#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$zero,5242772
+lw $t0,0($t0)
+addi $t1,$fp,-176
+sw $t0,0($t1)
+addi $t0,$fp,-176
+lw $t0,0($t0)
+addi $t1,$zero,5242828
+sw $t0,0($t1)
+addi $t0,$zero,5242832
+lw $t0,0($t0)
+li $v0,1#print int var
+move $a0,$t0
+syscall
+addi $t0,$fp,-180#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$zero,5242816
+lw $t0,0($t0)
+addi $t1,$fp,-180
+sw $t0,0($t1)
+addi $t0,$fp,-180
+lw $t0,0($t0)
+li $v0,1#print int var
+move $a0,$t0
+syscall
+addi $t0,$fp,-184#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$zero,5242772
+lw $t0,0($t0)
+addi $t1,$fp,-184
+sw $t0,0($t1)
+addi $t0,$fp,-184
+lw $t0,0($t0)
+li $v0,1#print int var
+move $a0,$t0
+syscall
+addi $t0,$fp,-188#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-160
+lw $t0,0($t0)
+addi $t1,$fp,-188
+sw $t0,0($t1)
+addi $t0,$fp,-188
+lw $t0,0($t0)
+li $v0,1#print int var
+move $a0,$t0
+syscall
+addi $t0,$zero,5242828
+lw $t0,0($t0)
+li $v0,11#print char var
+move $a0,$t0
+syscall
+la $a0,S23
+li $v0,4#print str
+syscall
+addi $a0,$zero,42
+li $v0,11#print character
+syscall
+addi $a0,$zero,97
+li $v0,11#print character
+syscall
+addi $s7,$s7,-4
+sw $ra,0($s7)
+jal returnq
+lw $ra,0($s7)
+addi $s7,$s7,4#sendback stack
+addi $t0,$fp,-192#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-192
+sw $v0,0($t0)
+addi $t0,$fp,-192
+lw $t0,0($t0)
+li $v0,11#print char var
+move $a0,$t0
+syscall
+la $a0,S24
+li $v0,4#print str
+syscall
+addi $t0,$fp,-196#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$zero,2147483647#add 11
+addi $t1,$zero,-2147483648#add 11
+add $t0,$t0,$t1
+addi $t1,$fp,-196
+sw $t0,0($t1)
+addi $t0,$fp,-196
+lw $t0,0($t0)
+li $v0,1#print int var
+move $a0,$t0
+syscall
+addi $t0,$fp,-200#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$zero,48#add 11
+addi $t1,$zero,48#add 11
+add $t0,$t0,$t1
+addi $t1,$fp,-200
+sw $t0,0($t1)
+addi $t0,$fp,-200
+lw $t0,0($t0)
+li $v0,1#print int var
+move $a0,$t0
+syscall
+addi $t0,$fp,-204#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$zero,48#add 11
+addi $t1,$zero,9#add 11
+add $t0,$t0,$t1
+addi $t1,$fp,-204
+sw $t0,0($t1)
+addi $t0,$fp,-204
+lw $t0,0($t0)
+li $v0,1#print int var
+move $a0,$t0
+syscall
+addi $t0,$fp,-208#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$zero,2147483647#add 11
+addi $t1,$zero,-2147483648#add 11
+add $t0,$t0,$t1
+addi $t1,$fp,-208
+sw $t0,0($t1)
+addi $t0,$fp,-208
+lw $t0,0($t0)
+li $v0,1#print int var
+move $a0,$t0
+syscall
+la $a0,S25
+li $v0,4#print str
+syscall
+nop
+addi $t0,$fp,-116
+lw $t0,0($t0)
+addi $t1,$zero,0
+bne $t0,$t1,A327
+la $a0,S26
+li $v0,4#print str
+syscall
+A327:
+nop
+addi $t0,$fp,-116
+lw $t0,0($t0)
+addi $t1,$zero,10
+bne $t0,$t1,A331
+la $a0,S27
+li $v0,4#print str
+syscall
+A331:
+nop
+addi $t0,$zero,-15
+addi $t1,$zero,2147483647
+bne $t0,$t1,A335
+la $a0,S28
+li $v0,4#print str
+syscall
+A335:
+nop
+addi $t0,$zero,2147483647
+addi $t1,$zero,-15
+beq $t0,$t1,A339
+la $a0,S29
+li $v0,4#print str
+syscall
+A339:
+la $a0,S30
+li $v0,4#print str
+syscall
+li $v0,5#scanf int
+syscall
+addi $t0,$fp,-120
+sw $v0,0($t0)
+li $v0,12#scanf char
+syscall
+addi $t0,$fp,-136
+sw $v0,0($t0)
+li $v0,5#scanf int
+syscall
+addi $t0,$zero,5242824
+sw $v0,0($t0)
+la $a0,S31
+li $v0,4#print str
+syscall
+la $a0,S32
+li $v0,4#print str
+syscall
+addi $t0,$fp,-120
+lw $t0,0($t0)
+li $v0,1#print int var
+move $a0,$t0
+syscall
+la $a0,S33
+li $v0,4#print str
+syscall
+addi $t0,$fp,-136
+lw $t0,0($t0)
+li $v0,11#print char var
+move $a0,$t0
+syscall
+la $a0,S34
+li $v0,4#print str
+syscall
+addi $t0,$zero,5242824
+lw $t0,0($t0)
+li $v0,1#print int var
+move $a0,$t0
+syscall
+la $a0,S35
+li $v0,4#print str
+syscall
+addi $s7,$s7,-4
+sw $ra,0($s7)
+jal whiletest
+lw $ra,0($s7)
+addi $s7,$s7,4#sendback stack
+la $a0,S36
+li $v0,4#print str
+syscall
+add $t0,$zero,1
+addi $t1,$fp,-132
+sw $t0,0($t1)
+addi $s7,$s7,-4
+addi $t0,$fp,-132
+lw $t0,0($t0)
+sw $t0,0($s7)
+addi $s7,$s7,-4
+sw $ra,0($s7)
+jal switchtest
+lw $ra,0($s7)
+addi $s7,$s7,4#sendback stack
+addi $t0,$fp,-216#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-216
+sw $v0,0($t0)
+addi $t0,$fp,-216
+lw $t0,0($t0)
+addi $t1,$fp,-128
+sw $t0,0($t1)
+la $a0,S37
+li $v0,4#print str
+syscall
+addi $t0,$fp,-128
+lw $t0,0($t0)
+li $v0,1#print int var
+move $a0,$t0
+syscall
+add $t0,$zero,2
+addi $t1,$fp,-132
+sw $t0,0($t1)
+addi $s7,$s7,-4
+addi $t0,$fp,-132
+lw $t0,0($t0)
+sw $t0,0($s7)
+addi $s7,$s7,-4
+sw $ra,0($s7)
+jal switchtest
+lw $ra,0($s7)
+addi $s7,$s7,4#sendback stack
+addi $t0,$fp,-224#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-224
+sw $v0,0($t0)
+addi $t0,$fp,-224
+lw $t0,0($t0)
+addi $t1,$fp,-128
+sw $t0,0($t1)
+la $a0,S38
+li $v0,4#print str
+syscall
+addi $t0,$fp,-128
+lw $t0,0($t0)
+li $v0,1#print int var
+move $a0,$t0
+syscall
+add $t0,$zero,3
+addi $t1,$fp,-132
+sw $t0,0($t1)
+addi $s7,$s7,-4
+addi $t0,$fp,-132
+lw $t0,0($t0)
+sw $t0,0($s7)
+addi $s7,$s7,-4
+sw $ra,0($s7)
+jal switchtest
+lw $ra,0($s7)
+addi $s7,$s7,4#sendback stack
+addi $t0,$fp,-232#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-232
+sw $v0,0($t0)
+addi $t0,$fp,-232
+lw $t0,0($t0)
+addi $t1,$fp,-128
+sw $t0,0($t1)
+la $a0,S39
+li $v0,4#print str
+syscall
+addi $t0,$fp,-128
+lw $t0,0($t0)
+li $v0,1#print int var
+move $a0,$t0
+syscall
+add $t0,$zero,4
+addi $t1,$fp,-132
+sw $t0,0($t1)
+addi $s7,$s7,-4
+addi $t0,$fp,-132
+lw $t0,0($t0)
+sw $t0,0($s7)
+addi $s7,$s7,-4
+sw $ra,0($s7)
+jal switchtest
+lw $ra,0($s7)
+addi $s7,$s7,4#sendback stack
+addi $t0,$fp,-240#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-240
+sw $v0,0($t0)
+addi $t0,$fp,-240
+lw $t0,0($t0)
+addi $t1,$fp,-128
+sw $t0,0($t1)
+la $a0,S40
+li $v0,4#print str
+syscall
+addi $t0,$fp,-128
+lw $t0,0($t0)
+li $v0,1#print int var
+move $a0,$t0
+syscall
+la $a0,S41
+li $v0,4#print str
+syscall
+add $t0,$zero,97
+addi $t1,$fp,-140
+sw $t0,0($t1)
+addi $s7,$s7,-4
+addi $t0,$fp,-140
+lw $t0,0($t0)
+sw $t0,0($s7)
+addi $s7,$s7,-4
+sw $ra,0($s7)
+jal relationcover
+lw $ra,0($s7)
+addi $s7,$s7,4#sendback stack
+addi $t0,$fp,-248#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-248
+sw $v0,0($t0)
+addi $t0,$fp,-248
+lw $t0,0($t0)
+addi $t1,$fp,-144
+sw $t0,0($t1)
+addi $t0,$fp,-144
+lw $t0,0($t0)
+li $v0,11#print char var
+move $a0,$t0
+syscall
+la $a0,S42
+li $v0,4#print str
+syscall
+add $t0,$zero,20
+addi $t1,$fp,-132
+sw $t0,0($t1)
+addi $s7,$s7,-4
+addi $t0,$fp,-132
+lw $t0,0($t0)
+sw $t0,0($s7)
+addi $s7,$s7,-4
+sw $ra,0($s7)
+jal f
+lw $ra,0($s7)
+addi $s7,$s7,4#sendback stack
+addi $t0,$fp,-256#new temp
+move $s7,$t0
+addi $t0,$zero,10
+sw $t0,0($s7)
+addi $t0,$fp,-256
+sw $v0,0($t0)
+addi $t0,$fp,-256
+lw $t0,0($t0)
+addi $t1,$fp,-124
+sw $t0,0($t1)
+addi $t0,$fp,-124
+lw $t0,0($t0)
+li $v0,1#print int var
+move $a0,$t0
+syscall
+#End of Program.

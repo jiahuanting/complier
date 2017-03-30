@@ -1,0 +1,41 @@
+# depslib dependency file v1.0
+1483176381 source:e:\codeblocksworkplace\complier\lex.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"define.h"
+
+1482926425 source:e:\codeblocksworkplace\complier\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"define.h"
+
+1483175311 e:\codeblocksworkplace\complier\define.h
+	<stdlib.h>
+	<stdio.h>
+
+1481447486 source:e:\codeblocksworkplace\complier\error.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"define.h"
+
+1483176570 source:e:\codeblocksworkplace\complier\parse.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"define.h"
+
+1483175327 source:e:\codeblocksworkplace\complier\midcode.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"define.h"
+
+1483175539 source:e:\codeblocksworkplace\complier\mips.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"define.h"
+
